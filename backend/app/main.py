@@ -21,5 +21,5 @@ app = FastAPI(lifespan=db_lifespan)
 @app.get("/users")
 async def list_users(db: Annotated[AsyncClient, Depends(db_client_get)]):
    
-    response = await supabase.table("users").select("*").execute()
+    response = await db.table("users").select("*").execute()
     return response.data
