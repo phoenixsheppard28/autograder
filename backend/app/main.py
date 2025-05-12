@@ -1,11 +1,13 @@
-from fastapi import FastAPI ,Depends
+from fastapi import FastAPI , Depends
 from contextlib import asynccontextmanager
 from typing import Annotated
 from app.dependencies.db_dep import db_client_get
 from app.internal.database import create_db_and_tables, dispose_db
 import uvicorn
 from sqlmodel import Session, select
-from app.models.models import Test
+from app.models import models
+
+
 
 
 
@@ -24,7 +26,7 @@ app = FastAPI(lifespan=db_lifespan)
 @app.get("/users")
 async def list_users(db: Annotated[Session, Depends(db_client_get)]):
    
-    response = db.exec(select(Test)).first()
+    response = db.exec(select(models.Autograder_Logs)).first()
     return response
 
 
