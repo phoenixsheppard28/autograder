@@ -1,11 +1,9 @@
-from fastapi import Request
-from sqlmodel.ext.asyncio.session import AsyncSession
+# from sqlmodel.ext.asyncio.session import AsyncSession add when sqlmode includes async
 from sqlmodel import Session, create_engine, SQLModel
-
 from app.internal.secrets import secrets
 
 
-engine = create_engine(url=secrets.DATABASE_URL, echo=True)
+engine = create_engine(url=secrets.DATABASE_URL, echo=False)
 
 
 

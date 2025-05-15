@@ -1,4 +1,4 @@
 run:
 	poetry run uvicorn app.main:app --reload
 test:
-	poetry run pytest tests/
+	poetry run pytest -s tests/

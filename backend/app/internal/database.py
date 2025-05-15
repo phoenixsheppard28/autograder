@@ -4,7 +4,7 @@ from app.dependencies.db_dep import engine
 
 
 def create_db_and_tables():
-    SQLModel.metadata.create_all(engine)
+    SQLModel.metadata.create_all(engine,checkfirst=False)
 
 def dispose_db():
     engine.dispose()
